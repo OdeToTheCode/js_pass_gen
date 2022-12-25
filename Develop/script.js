@@ -15,7 +15,11 @@ var passwordLength;
 var specChar;
 
 function generatePassword(){
-  askQuestions
+  var userResponse = prompt("How many charecters??")
+  console.log(userResponse)
+  passwordLength = parseInt(userResponse)
+  console.log(passwordLength)
+  
 }
 
 
