@@ -4,7 +4,13 @@ var lowerCaseAlphabet = ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "
 var numericalAlphabet = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 var specailChareters = ["!", "@", "#", "$", "%", "&", "*", "?", "+"];
 var finalPassword = "";
+var passwordLength;
 var generateBtn = document.querySelector("#generate");
+var wantSpecialCharecters;
+var wantUpperCase;
+var wantLowerCase;
+var wantNumbers;
+var mixArray = [];
 
 
 // Assignment Code
@@ -15,19 +21,55 @@ var passwordLength;
 var specChar;
 
 function generatePassword(){
-  var userResponse = prompt("How many charecters??")
-  console.log(userResponse)
-  passwordLength = parseInt(userResponse)
-  console.log(passwordLength)
-  
+  passwordLength = parseInt(prompt("How many charecters do you want??"));
+
+  while (passwordLength <=8 || passwordLength >= 128){
+    console.log("your password length should be between 8 and 128 charecters")
+    passwordLength = parseInt(prompt("How many charecters do you want??"));
+  }
+  wantSpecialCharecters = confirm("Do you want special charecters?");
+  wantUpperCase = confirm("Do you want upper case letters?");
+  wantLowerCase = confirm("Do you want lower case letters?");
+  wantNumbers = confirm("Do you want numbers?");
+
+  var mixArray = [];
+
+  if (wantSpecialCharecters === true){
+    mixArray.push(...specailChareters);
+  } else {
+    console.log("not special bruh");
+  }
+
+  if (wantUpperCase === true){
+    mixArray.push(...upperCaseAlphabet);
+  } else {
+    console.log("no uppercase");
+  }
+
+  if (wantLowerCase === true){
+    mixArray.push(...lowerCaseAlphabet);
+  } else {
+    console.log("no lowercase");
+  }
+
+  if (wantNumbers === true){
+    mixArray.push(...numericalAlphabet);
+  } else {
+    console.log("no numbers");
+  }
+
+  console.log(mixArray);
+
+  for(i=0; 1<passwordLength; i++){
+  var randomNumber = Math.floor(Math.random() * mixArray.length + 1);
+  finalPassword += mixArray[randomNumber];
+  }
+
+  console.log(finalPassword)
+  console.log("You're mom is crindge")
 }
 
-
-function askQuestions() {
-  response = prompt("How many characters?");
-  passwordLength = parseInt(response);
-  specChar = confirm("Do you want to use special characters?");
-}
+console.log(finalPassword)
 
 // Write password to the #password input
 function writePassword() {
