@@ -57,16 +57,13 @@ function generatePassword(){
   } else {
     console.log("no numbers");
   }
-
-  console.log(mixArray);
-
-  for(i=0; 1<passwordLength; i++){
+  
+  for (i=0; i<passwordLength; i++){
   var randomNumber = Math.floor(Math.random() * mixArray.length + 1);
   finalPassword += mixArray[randomNumber];
   }
+  return finalPassword;
 
-  console.log(finalPassword)
-  console.log("You're mom is crindge")
 }
 
 console.log(finalPassword)
